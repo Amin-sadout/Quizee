@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Day 13 Quiz App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <h1>Quizee</h1>
+    <p class="subtitle">Do you know your Anime? One Piece Edition</p>
+
+    <div class="quiz-box">
+      <p id="questionCount">Question 1 of 5</p>
+      <h2 id="questionText">Questions</h2>
+
+      <div id="answersBox" class="answers-box"></div>
+
+      <p id="scoreText">Score: 0</p>
+
+      <button id="nextBtn">Next</button>
+      <button id="restartBtn">Restart</button>
+    </div>
+  </div>
+
+  <audio id="bgMusic" loop autoplay>
+  <source src="music/One Piece Ambient_ Music mix & ambiance.mp3" type="audio/mpeg" />
+</audio>
+
+<button id="musicBtn">mute Music</button>
+
+  <script src="script.js"></script>
+</body>
+</html>
