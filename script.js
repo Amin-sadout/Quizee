@@ -533,3 +533,88 @@ musicBtn.addEventListener('click', () => {
   }
 });
 
+let currentQuestionIndex = 0;
+let score = 0;
+let answered = false;
+
+const renderQuestion = () => {
+  const currentQuestion = quizData[currentQuestionIndex];
+
+  questionCount.innerText = `Question ${currentQuestionIndex + 1} of ${quizData.length}`;
+  questionText.innerText = currentQuestion.question;
+  scoreText.innerText = `Score: ${score}`;
+
+  answersBox.innerHTML = '';
+
+  for (let i = 0; i < currentQuestion.answers.length; i++) {
+    const answerBtn = document.createElement('button');
+    answerBtn.innerText = currentQuestion.answers[i];
+
+    answerBtn.addEventListener('click', () => {
+      if (answered === true) {
+        return;
+      }
+
+      answered = true;
+
+      if (currentQuestion.answers[i] === currentQuestion.correctAnswer) {
+        score++;
+        scoreText.innerText = `Score: ${score}`;
+        answerBtn.style.border = '2px solid green';
+      } else {
+        answerBtn.style.border = '2px solid red';
+      }
+
+      const allAnswerButtons = answersBox.querySelectorAll('button');
+
+      for (let j = 0; j < allAnswerButtons.length; j++) {
+        if (allAnswerButtons[j].innerText === currentQuestion.correctAnswer) {
+          allAnswerButtons[j].style.border = '2px solid green';
+        }
+
+        allAnswerButtons[j].disabled = true;
+      }
+    });
+
+    answersBox.appendChild(answerBtn);
+  }
+};
+
+const showFinalScreen = () => {
+  questionCount.innerText = 'Quiz Finished';
+  questionText.innerText = `You got ${score} out of ${quizData.length}`;
+  answersBox.innerHTML = '';
+  scoreText.innerText = `Final Score: ${score}`;
+
+  nextBtn.style.display = 'none';
+  restartBtn.style.display = 'inline-block';
+};
+
+nextBtn.addEventListener('click', () => {
+  if (answered === false) {
+    return;
+  }
+
+  currentQuestionIndex++;
+
+  if (currentQuestionIndex < quizData.length) {
+    answered = false;
+    renderQuestion();
+  } else {
+    showFinalScreen();
+  }
+});
+
+restartBtn.addEventListener('click', () => {
+  currentQuestionIndex = 0;
+  score = 0;
+  answered = false;
+
+  nextBtn.style.display = 'inline-block';
+  restartBtn.style.display = 'none';
+
+  renderQuestion();
+});
+
+renderQuestion();
+
