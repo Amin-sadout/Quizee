@@ -203,3 +203,56 @@ h1 {
   transform: translateY(-2px);
   box-shadow: 0 12px 20px rgba(122, 74, 33, 0.24);
 }
+
+#themeBtn {
+  padding: 10px 14px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #222;
+  color: white;
+  margin-bottom: 20px;
+}
+
+body.dark {
+  background: #111827;
+  color: #f9fafb;
+}
+
+body.dark .app {
+  background: #1f2937;
+  color: #f9fafb;
+  border-color: #374151;
+}
+
+body.dark .subtitle {
+  color: #d1d5db;
+}
+
+body.dark input {
+  background: #111827;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+body.dark li,
+body.dark .quiz-box {
+  background: #111827;
+  color: #f9fafb;
+  border-color: #4b5563;
+}
+
+body.dark button {
+  background: #f9fafb;
+  color: #111827;
+}
+
+body.dark #questionText {
+ margin-top: 0;
+ margin-bottom: 24px;
+ font-size: 28px;
+ line-height: 1.3;
+ color: #cfcece;
+}
